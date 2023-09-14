@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: "BlackLivesMater";
+  src: url(./asset/fonts/BlackLivesMatter-StatenIsl.otf), format("truetype");
+}
+body {
+  background: linear-gradient(80deg, #3F1A4B 6.68%, #2f2e2e 111.22%);
+}
+body header {
+  height: 50px;
+}
+body header #logo {
+  float: left;
+  margin-left: 30px;
+}
+body header #logo span {
+  font-family: "BlackLivesMater";
+  color: #fff;
+  float: left;
+  line-height: 50px;
+  font-size: 2em;
+}
+body header #logo figure {
+  float: left;
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  height: 50px;
+}
+body header #logo figure img {
+  height: 70%;
+}
+body header #burger {
+  float: right;
+  margin-right: 30px;
+}/*# sourceMappingURL=style.css.map */
