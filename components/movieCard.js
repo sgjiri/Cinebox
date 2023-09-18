@@ -57,7 +57,6 @@ function createGenre(genres) {
         filmGenres = filmGenres + genre + ', '
 
     }
-    console.log(filmGenres);
     filmGenres = filmGenres.substring(0, filmGenres.length - 2);
 
 
@@ -68,7 +67,19 @@ function createGenre(genres) {
 }
 
 
+function createSpan(span, id) {
+    let spanBloc = document.createElement('span');
+    spanBloc.innerText = span;
+    spanBloc.id = id;
+    spanBloc.style.color= '#fff';
+    spanBloc.style.padding = '10px';
+    spanBloc.style.cursor= 'pointer';
+    spanBloc.className = 'categorieFilm'
+    return spanBloc;
+}
 
-export { createFirstTitle, createSecondeTitle, createParagraph, createLien, createPoster, createYeur, createGenre};
+
+
+export { createFirstTitle, createSecondeTitle, createParagraph, createLien, createPoster, createYeur, createGenre, createSpan};
 
 

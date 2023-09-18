@@ -46,17 +46,21 @@ body{
 
     }
     main{
-        #app{
-            .oneFilm{
-                &.invisible{
-                    display: none;
+
+        #maxWidth{
+            margin: 20px auto;
+            width: calc(100% - 50px);
+            max-width: 1500px;
+            #categories{
+                margin: 20px 0;
+            }
+            #app{
+                .oneFilm{
+                    &.invisible{
+                        display: none;
+                    }
                 }
             }
-        }
+        }   
     }
-
-    
-
-
-    
 }

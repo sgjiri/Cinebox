@@ -1,5 +1,5 @@
-import { createFirstTitle, createSecondeTitle, createLien, createParagraph, createPoster, createYeur, createGenre } from "./components/movieCard";
-
+import { createFirstTitle, createSecondeTitle, createLien, createParagraph, createPoster, createYeur, createGenre, createSpan  } from "./components/movieCard";
+let oneFilm = document.getElementsByClassName('oneFilm');
 
 
 const options = {
@@ -9,6 +9,49 @@ const options = {
     Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3NDJkMzQ2YjJmYzU4ZDY5ODFkYzA2OGU3NzQxYjRlZiIsInN1YiI6IjY0ZmYxM2E5NmEyMjI3MDEzNzJjYjlkYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.SR0SRMd26YudmAbU-CGdCbydluRdJC8yHgDZ043oRqE'
   }
 };
+
+fetch('https://api.themoviedb.org/3/genre/movie/list?language=fr', options)
+  .then(response => response.json())
+  .then(response => {
+    let categories = document.getElementById('categories');
+    for (let categorie of response.genres){
+        categories.appendChild(createSpan(categorie.name, categorie.id));
+
+      
+    };
+    let categorieFilm = document.getElementsByClassName('categorieFilm');
+    
+    for (let i = 0; i < categorieFilm.length; i++) {
+
+      categorieFilm[i].addEventListener('click', function () {
+        const idValue = categorieFilm[i].getAttribute('id');
+      fetch(`https://api.themoviedb.org/3/discover/movie?with_genres=${idValue}`, options)
+      .then(response => response.json())
+      .then(response => {
+        for (let j = 0; j < oneFilm.length; j++) {
+          oneFilm[j].classList.add('invisible');
+        }
+        
+        
+
+        let app = document.getElementById('app');
+        for (let movie of response.results) {
+          let newDiv = document.createElement('div');
+          newDiv.className = 'oneFilm'
+          app.appendChild(newDiv);
+          newDiv.appendChild(createSecondeTitle(movie.title));
+          newDiv.appendChild(createParagraph(movie.overview));
+          newDiv.appendChild(createLien(movie.id));}
+
+
+
+
+      })
+    
+
+      })
+
+  }})
 
 
 
@@ -29,7 +72,7 @@ fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_v
 
     }
     let lienDetailFilm = document.getElementsByClassName('lienDetailFilm');
-    let oneFilm = document.getElementsByClassName('oneFilm');
+    
     for (let i = 0; i < lienDetailFilm.length; i++) {
 
       lienDetailFilm[i].addEventListener('click', function () {
@@ -44,7 +87,6 @@ fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_v
           .then(response => {
             let newDivDetil = document.createElement('div');
             app.appendChild(newDivDetil);
-            console.log(response.runtime);
             newDivDetil.appendChild(createPoster(response.poster_path));
             newDivDetil.appendChild(createFirstTitle(response.title));
             newDivDetil.appendChild(createYeur(response.release_date));
@@ -56,11 +98,6 @@ fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_v
     }
   })
   .catch(err => console.error(err));
-
-
-
-
-
 
 
 // class Person{

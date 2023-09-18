@@ -38,6 +38,14 @@ body header #burger {
   float: right;
   margin-right: 30px;
 }
-body main #app .oneFilm.invisible {
+body main #maxWidth {
+  margin: 20px auto;
+  width: calc(100% - 50px);
+  max-width: 1500px;
+}
+body main #maxWidth #categories {
+  margin: 20px 0;
+}
+body main #maxWidth #app .oneFilm.invisible {
   display: none;
 }/*# sourceMappingURL=style.css.map */
