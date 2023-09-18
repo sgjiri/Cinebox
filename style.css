@@ -37,4 +37,7 @@ body header #logo figure img {
 body header #burger {
   float: right;
   margin-right: 30px;
+}
+body main #app .oneFilm.invisible {
+  display: none;
 }/*# sourceMappingURL=style.css.map */

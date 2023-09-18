@@ -45,6 +45,15 @@ body{
         }
 
     }
+    main{
+        #app{
+            .oneFilm{
+                &.invisible{
+                    display: none;
+                }
+            }
+        }
+    }
 
     
 
